@@ -42,3 +42,5 @@ PMW-Day-1/
 ## 🚀 Future Plans
 
 I plan to continue improving this repository by adding more projects, learning about AI and 3D reconstruction techniques, and contributing to PreserveMy.World initiatives.
+
+Assignment submitted through the week1-submission branch.
