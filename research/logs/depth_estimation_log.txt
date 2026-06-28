@@ -1,0 +1,42 @@
+============================================================
+PMW Experiment: Monocular Depth Estimation
+Author: Fatima Malik | FAST-NUCES | June 2026
+============================================================
+[download] Fetching sample image from:
+  https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Badshahi_Mosque_Lahore.jpg/1280px-Badshahi_Mosque_Lahore.jpg
+[warn] Could not download image (403 Client Error: Forbidden for url: https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Badshahi_Mosque_Lahore.jpg/1280px-Badshahi_Mosque_Lahore.jpg). Using placeholder.
+[model] NOTE: Running MOCK depth estimation (no GPU/model download needed).
+[model] To run the real model, uncomment the transformers pipeline in the code.
+[model] Depth map shape: (480, 640)
+[model] Depth range: min=0.0000, max=1.0000
+============================================================
+PMW Experiment: Monocular Depth Estimation
+Author: Fatima Malik | FAST-NUCES | June 2026
+============================================================
+[download] Fetching sample image from:
+  https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Badshahi_Mosque_Lahore.jpg/1280px-Badshahi_Mosque_Lahore.jpg
+[warn] Could not download image (403 Client Error: Forbidden for url: https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Badshahi_Mosque_Lahore.jpg/1280px-Badshahi_Mosque_Lahore.jpg). Using placeholder.
+[model] NOTE: Running MOCK depth estimation (no GPU/model download needed).
+[model] To run the real model, uncomment the transformers pipeline in the code.
+[model] Depth map shape: (480, 640)
+[model] Depth range: min=0.0000, max=1.0000
+[save] Raw depth array → C:\Users\Fatima Malik\Downloads\PMW-day1\research\outputs\depth_raw.npy
+[save] Depth visualization → C:\Users\Fatima Malik\Downloads\PMW-day1\research\outputs\depth_output.png
+
+[analysis] Depth map statistics:
+  Shape         : (480, 640)
+  Mean depth    : 0.5015
+  Std deviation : 0.2826
+  Near pixels   : 90996 (29.6%)
+  Mid pixels    : 124783 (40.6%)
+  Far pixels    : 91421 (29.8%)
+
+[analysis] PMW interpretation:
+  A depth map from archival photos lets us understand the spatial
+  layout of a heritage site without needing multi-view capture.
+  This can drive parallax effects, pseudo-3D viewers, and depth-aware
+  AR overlays — all useful for PreserveMy.World's digital preservation goals.
+
+[done] Experiment complete.
+       Outputs saved to: C:\Users\Fatima Malik\Downloads\PMW-day1\research\outputs
+       Log saved to:     C:\Users\Fatima Malik\Downloads\PMW-day1\research\logs\depth_estimation_log.txt
