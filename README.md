@@ -43,4 +43,5 @@ PMW-Day-1/
 
 I plan to continue improving this repository by adding more projects, learning about AI and 3D reconstruction techniques, and contributing to PreserveMy.World initiatives.
 
-Assignment submitted through the week1-submission branch.
+## Submission Branch
+This branch was created for the PMW Day 1 pull request.
