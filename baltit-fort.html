@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baltit Fort — Team Baltit | Pakistan Preservation Sprint</title>
+<meta name="description" content="A living record of Baltit Fort and the Hunza heritage landscape — architecture, climate risk, and why digital preservation matters.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Nastaliq+Urdu:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c2321;
+    --cream:#efe7d6;
+    --cream-dim:#e2d8c1;
+    --clay:#b5622c;
+    --clay-deep:#8f4a20;
+    --glacier:#4c7f8c;
+    --glacier-dim:#33555f;
+    --dusk:#232f45;
+    --gold:#dda255;
+    --line: rgba(28,35,33,0.14);
+    --serif: 'Fraunces', serif;
+    --sans: 'Work Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+    --urdu: 'Noto Nastaliq Urdu', serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+  a{color:inherit;}
+  .u{font-family:var(--urdu); direction:rtl; unicode-bidi:isolate;}
+
+  /* ===== terrace rail — signature element ===== */
+  .terrace-rail{
+    position:fixed; left:0; top:0; bottom:0; width:14px; z-index:40;
+    display:flex; flex-direction:column;
+  }
+  .terrace-rail span{flex:1; border-bottom:1px solid rgba(239,231,214,0.25);}
+  .terrace-rail span.on{background:var(--clay);}
+  @media (max-width: 720px){ .terrace-rail{display:none;} }
+
+  header.top{
+    padding:18px 28px 18px 40px;
+    display:flex; justify-content:space-between; align-items:center;
+    position:sticky; top:0; z-index:30;
+    background:rgba(239,231,214,0.9); backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .brand{display:flex; align-items:center; gap:10px; font-family:var(--serif); font-weight:600; font-size:1.05rem; letter-spacing:0.02em;}
+  .brand svg{width:26px; height:26px;}
+  nav.top-nav{display:flex; gap:22px; font-size:0.85rem; font-family:var(--mono); text-transform:uppercase; letter-spacing:0.06em;}
+  nav.top-nav a{text-decoration:none; opacity:0.75; border-bottom:1px solid transparent; padding-bottom:2px;}
+  nav.top-nav a:hover{opacity:1; border-color:var(--clay);}
+  @media (max-width:720px){ nav.top-nav{display:none;} }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative; padding:64px 40px 0; overflow:hidden;
+    background: linear-gradient(180deg, var(--dusk) 0%, var(--dusk) 55%, var(--cream) 55%);
+  }
+  .hero-inner{max-width:1180px; margin:0 auto; position:relative; z-index:2;}
+  .eyebrow{
+    font-family:var(--mono); font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--gold); display:flex; gap:10px; align-items:center; margin-bottom:22px;
+  }
+  .eyebrow::before{content:""; width:22px; height:1px; background:var(--gold); display:inline-block;}
+  h1.thesis{
+    font-family:var(--serif); font-weight:600; color:var(--cream);
+    font-size:clamp(2.4rem, 5.6vw, 4.6rem); line-height:1.04; letter-spacing:-0.01em;
+    max-width:15ch; margin:0 0 22px;
+  }
+  h1.thesis em{font-style:italic; color:var(--clay); font-weight:500;}
+  .hero-sub{color:var(--cream-dim); max-width:52ch; font-size:1.05rem; margin-bottom:36px;}
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:28px; padding:22px 0 40px;
+    border-top:1px solid rgba(239,231,214,0.18);
+  }
+  .hero-meta div{font-family:var(--mono); font-size:0.78rem; color:var(--cream-dim); text-transform:uppercase; letter-spacing:0.05em;}
+  .hero-meta strong{display:block; font-family:var(--sans); font-size:0.95rem; color:var(--cream); text-transform:none; letter-spacing:0; margin-top:4px; font-weight:500;}
+
+  .skyline{width:100%; height:auto; display:block;}
+
+  .cover-frame{
+    position:relative; margin:-40px auto 0; max-width:1180px; padding:0 40px 60px;
+  }
+  .cover-frame figure{margin:0; position:relative; border:1px solid var(--line);}
+  .cover-frame img{width:100%; display:block; height:min(56vw,460px); object-fit:cover; filter:saturate(1.02) contrast(1.02);}
+  .cover-frame figcaption{
+    font-family:var(--mono); font-size:0.74rem; color:var(--ink); opacity:0.65;
+    padding:10px 4px 0; display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;
+  }
+
+  /* ===== sections & terrace layout ===== */
+  section{padding:78px 40px; max-width:1180px; margin:0 auto; position:relative;}
+  .section-head{display:flex; gap:30px; align-items:baseline; margin-bottom:44px; flex-wrap:wrap;}
+  .section-num{font-family:var(--mono); font-size:0.8rem; color:var(--clay); letter-spacing:0.08em;}
+  h2{
+    font-family:var(--serif); font-weight:600; font-size:clamp(1.7rem,3.2vw,2.5rem);
+    margin:0; letter-spacing:-0.01em;
+  }
+  .kicker{font-family:var(--mono); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--glacier-dim); opacity:0.85;}
+
+  /* terrace stepping: each level indents further, like agricultural terraces */
+  .terraces{display:flex; flex-direction:column; gap:0;}
+  .terrace-step{
+    border-top:1px solid var(--line);
+    padding:34px 0 34px clamp(0px, 4vw, 90px);
+    display:grid; grid-template-columns: 1.1fr 1.7fr; gap:40px;
+  }
+  .terrace-step:last-child{border-bottom:1px solid var(--line);}
+  .terrace-step .step-label{font-family:var(--mono); font-size:0.78rem; color:var(--clay); text-transform:uppercase; letter-spacing:0.06em;}
+  .terrace-step h3{font-family:var(--serif); font-size:1.35rem; margin:8px 0 10px; font-weight:600;}
+  .terrace-step p{margin:0; color:#3a413e; font-size:0.98rem;}
+  @media (max-width:760px){
+    .terrace-step{grid-template-columns:1fr; padding-left:0 !important;}
+  }
+
+  /* why it matters — risk cards */
+  .risk-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .risk-card{background:var(--cream); padding:28px 26px;}
+  .risk-card .tag{font-family:var(--mono); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--glacier-dim);}
+  .risk-card h4{font-family:var(--serif); font-size:1.15rem; margin:10px 0 8px; font-weight:600;}
+  .risk-card p{margin:0; font-size:0.93rem; color:#3a413e;}
+  @media (max-width:820px){ .risk-grid{grid-template-columns:1fr;} }
+
+  .argument-block{
+    background:var(--dusk); color:var(--cream); padding:46px 44px; margin-top:44px;
+    border-left:4px solid var(--clay); position:relative;
+  }
+  .argument-block p{font-family:var(--serif); font-size:1.25rem; line-height:1.5; margin:0; font-weight:500;}
+  .argument-block .attr{margin-top:18px; font-family:var(--mono); font-size:0.75rem; color:var(--gold); text-transform:uppercase; letter-spacing:0.06em;}
+
+  /* research / source log ledger */
+  .ledger{width:100%; border-collapse:collapse; font-family:var(--mono); font-size:0.85rem;}
+  .ledger thead th{
+    text-align:left; padding:10px 14px; border-bottom:2px solid var(--ink);
+    text-transform:uppercase; letter-spacing:0.05em; font-size:0.72rem; color:var(--glacier-dim);
+  }
+  .ledger tbody td{padding:14px 14px; border-bottom:1px solid var(--line); vertical-align:top;}
+  .ledger tbody tr:hover{background:var(--cream-dim);}
+  .ledger a{color:var(--clay-deep); text-decoration:underline; text-underline-offset:2px;}
+  .ledger .n{color:var(--clay); font-weight:600;}
+  .table-scroll{overflow-x:auto; border:1px solid var(--line);}
+
+  /* digital experience / embeds */
+  .embed-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:26px;}
+  @media (max-width:840px){ .embed-grid{grid-template-columns:1fr;} }
+  .map-wrap{border:1px solid var(--line); background:#dfe7e3; position:relative;}
+  .map-wrap iframe{width:100%; height:420px; border:0; display:block; filter:grayscale(0.15) contrast(1.05);}
+  .map-label{position:absolute; top:14px; left:14px; background:var(--dusk); color:var(--cream); font-family:var(--mono); font-size:0.7rem; padding:6px 10px; letter-spacing:0.05em; text-transform:uppercase;}
+  .idea-card{border:1px solid var(--line); padding:26px; background:var(--cream-dim);}
+  .idea-card h4{font-family:var(--serif); margin:0 0 10px; font-size:1.1rem;}
+  .idea-card ul{margin:0; padding-left:18px; font-size:0.92rem; color:#3a413e;}
+  .idea-card li{margin-bottom:8px;}
+
+  /* bilingual strip */
+  .bilingual{background:var(--clay); color:var(--cream); padding:50px 40px;}
+  .bilingual-inner{max-width:1180px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:start;}
+  @media (max-width:760px){ .bilingual-inner{grid-template-columns:1fr;} }
+  .bilingual h3{font-family:var(--mono); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; opacity:0.85; margin:0 0 14px;}
+  .bilingual p.en{font-family:var(--serif); font-size:1.15rem; line-height:1.5; margin:0;}
+  .bilingual p.ur{font-size:1.35rem; line-height:2; margin:0;}
+  .burushaski-note{margin-top:16px; font-family:var(--mono); font-size:0.78rem; opacity:0.85;}
+
+  /* audience */
+  .audience-row{display:flex; flex-wrap:wrap; gap:14px;}
+  .aud-chip{
+    border:1px solid var(--ink); padding:10px 16px; font-family:var(--mono); font-size:0.8rem;
+    text-transform:uppercase; letter-spacing:0.04em;
+  }
+
+  /* team */
+  .team-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .team-card{background:var(--cream); padding:24px;}
+  .team-card .role{font-family:var(--mono); font-size:0.7rem; text-transform:uppercase; color:var(--clay); letter-spacing:0.06em;}
+  .team-card h4{font-family:var(--serif); margin:10px 0 4px; font-size:1.1rem;}
+  .team-card .task{font-size:0.88rem; color:#3a413e; margin-top:8px;}
+  .team-card .status{
+    display:inline-block; margin-top:12px; font-family:var(--mono); font-size:0.68rem;
+    text-transform:uppercase; letter-spacing:0.05em; padding:3px 8px; border:1px solid var(--glacier-dim); color:var(--glacier-dim);
+  }
+
+  /* links row */
+  .link-cta{display:flex; flex-wrap:wrap; gap:16px; margin-top:10px;}
+  .link-cta a{
+    font-family:var(--mono); font-size:0.82rem; text-transform:uppercase; letter-spacing:0.05em;
+    padding:14px 20px; border:1px solid var(--ink); text-decoration:none; display:inline-flex; gap:8px; align-items:center;
+    transition:background .15s, color .15s;
+  }
+  .link-cta a:hover{background:var(--ink); color:var(--cream);}
+  .link-cta a.primary{background:var(--clay); border-color:var(--clay); color:var(--cream);}
+  .link-cta a.primary:hover{background:var(--clay-deep); border-color:var(--clay-deep);}
+
+  footer{padding:40px 40px 60px; border-top:1px solid var(--line); font-family:var(--mono); font-size:0.78rem; color:#5a615e; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+</style>
+</head>
+<body>
+
+<div class="terrace-rail" id="rail"></div>
+
+<header class="top">
+  <div class="brand">
+    <svg viewBox="0 0 40 40" fill="none"><path d="M4 30 L10 30 L10 22 L15 22 L15 26 L20 26 L20 14 L25 14 L25 20 L30 20 L30 10 L36 10" stroke="#b5622c" stroke-width="2.4" fill="none"/><path d="M4 34 L36 34" stroke="#1c2321" stroke-width="2"/></svg>
+    Team Baltit
+  </div>
+  <nav class="top-nav">
+    <a href="#matters">Why it matters</a>
+    <a href="#research">Research</a>
+    <a href="#experience">Digital experience</a>
+    <a href="#team">Team</a>
+    <a href="#log">Source log</a>
+  </nav>
+</header>
+
+<section class="hero" style="padding-bottom:0;">
+  <div class="hero-inner">
+    <div class="eyebrow">Pakistan Preservation Sprint · Gilgit&#8209;Baltistan</div>
+    <h1 class="thesis">700 years of stone and timber, held together by <em>who remembers it.</em></h1>
+    <p class="hero-sub">Baltit Fort has survived earthquakes, sieges, and abandonment. It has not yet had to survive a warming Karakoram, a tourism boom, and a generation that knows it mainly as a backdrop for photos. This page is our case for treating memory as infrastructure.</p>
+    <div class="hero-meta">
+      <div>Location <strong>Karimabad, Hunza Valley, Gilgit&#8209;Baltistan</strong></div>
+      <div>Founded <strong>8th century CE core, expanded 15th–19th c.</strong></div>
+      <div>Status <strong>UNESCO Tentative List since 2004</strong></div>
+      <div>Restored <strong>1990–1996, Aga Khan Trust for Culture</strong></div>
+    </div>
+  </div>
+  <svg class="skyline" viewBox="0 0 1400 160" preserveAspectRatio="none">
+    <polygon points="0,160 0,90 120,40 220,85 340,20 420,70 520,10 640,75 760,30 860,90 980,50 1100,95 1220,45 1320,80 1400,55 1400,160" fill="#1a2438"/>
+    <polygon points="0,160 0,120 90,105 160,130 260,100 350,125 460,95 560,120 660,90 760,115 860,95 960,120 1060,100 1160,125 1260,105 1360,125 1400,110 1400,160" fill="#151d2e"/>
+  </svg>
+</section>
+
+<div class="cover-frame">
+  <figure>
+    <img src="fort-2.jpg" alt="Complete view of Baltit Fort perched above Karimabad village, Hunza Valley" loading="eager">
+    <figcaption>
+      <span>Baltit Fort, Karimabad — view from the Hunza terraces</span>
+      <span>Photo: Wallpaper Flare, wallpaperflare.com/search?wallpaper=Hunza%2C+Pakistan</span>
+    </figcaption>
+  </figure>
+</div>
+
+<section id="matters">
+  <div class="section-head">
+    <span class="section-num">01</span>
+    <div>
+      <div class="kicker">Why this place matters</div>
+      <h2>The fort survived the Mirs leaving. It may not survive being loved wrong.</h2>
+    </div>
+  </div>
+
+  <div class="argument-block">
+    <p>Baltit Fort is the only reason anyone can point to where Hunza's political history actually happened — not a replica, not a museum diorama, the real stacked-stone rooms where 700 years of rule, war, and craft took place. Lose the surrounding village fabric or the glacier-fed slopes it sits on, and you don't just lose a view. You lose the only physical proof that this history is not folklore.</p>
+    <div class="attr">Team Baltit — preservation thesis</div>
+  </div>
+
+  <div class="risk-grid" style="margin-top:44px;">
+    <div class="risk-card">
+      <div class="tag">Climate risk</div>
+      <h4>Glacial lake outburst floods</h4>
+      <p>Gilgit&#8209;Baltistan recorded roughly 14 glacial lake outburst floods (GLOFs) between 2018–2021, and 75 in 2022 alone, per UNDP data — a five-fold spike concentrated in the same valleys that hold Hunza's heritage villages.</p>
+    </div>
+    <div class="risk-card">
+      <div class="tag">Development pressure</div>
+      <h4>Tourism outgrowing infrastructure</h4>
+      <p>The restored fort now draws over 20,000 visitors a year, roughly half from outside Pakistan — a success story for the local economy, but a load the historic settlement's roads, water, and waste systems were never built for.</p>
+    </div>
+    <div class="risk-card">
+      <div class="tag">Memory risk</div>
+      <h4>The "postcard" problem</h4>
+      <p>Most visitors and most online content treat the fort as scenery — a photo stop on the way to Attabad Lake — rather than as the seat of the Hunza state. The politics, the craftsmanship, and the Burushaski context rarely make it past the caption.</p>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="section-head">
+    <span class="section-num">02</span>
+    <div>
+      <div class="kicker">Research notes</div>
+      <h2>Five facts worth building a page on</h2>
+    </div>
+  </div>
+
+  <div class="terraces">
+    <div class="terrace-step">
+      <div><span class="step-label">Origin</span><h3>An 8th-century core, rebuilt for a princess</h3></div>
+      <p>Conservation surveys date the fort's original single tower to roughly the 8th century CE. Its most visible character, though, comes from the 15th century, when Tham (ruler) Ayasho II married a princess from Baltistan whose accompanying artisans reshaped the fort in a style echoing Tibet's Potala Palace.</p>
+    </div>
+    <div class="terrace-step">
+      <div><span class="step-label">Abandonment</span><h3>Empty for 45 years before restoration began</h3></div>
+      <p>The Mirs of Hunza left the fort in 1945 for a new palace down the hill. With no one maintaining it, the roof and load-bearing timbers began to fail — by the 1980s, engineers considered its collapse a real possibility.</p>
+    </div>
+    <div class="terrace-step">
+      <div><span class="step-label">Restoration</span><h3>A six-year, multi-country rescue</h3></div>
+      <p>In 1990, the Mir's family transferred the fort to the newly formed Baltit Heritage Trust. The Aga Khan Trust for Culture led the restoration with the Aga Khan Cultural Service Pakistan, funded in part by the Getty Grant Program (USA) and the Norwegian and French governments, finishing in 1996.</p>
+    </div>
+    <div class="terrace-step">
+      <div><span class="step-label">Recognition</span><h3>A template for the region, not just a repair job</h3></div>
+      <p>The project became the Aga Khan Trust for Culture's first major intervention in Pakistan and a model later applied to Shigar and Khaplu forts and to heritage sites in Tajikistan — it has won UNESCO Asia-Pacific Heritage Awards in multiple years between 2002 and 2013.</p>
+    </div>
+    <div class="terrace-step">
+      <div><span class="step-label">Present danger</span><h3>The valley's glaciers are now the fastest-moving threat</h3></div>
+      <p>The nearby Shishper glacier's repeated surges have caused outburst floods severe enough to collapse the Hassanabad bridge in 2022, cutting the Karakoram Highway link that heritage tourism and the local economy depend on.</p>
+    </div>
+  </div>
+</section>
+
+<div class="bilingual">
+  <div class="bilingual-inner">
+    <div>
+      <h3>English</h3>
+      <p class="en">A fort is only "preserved" once its story survives in the language its own people tell it in. That is the audience we are building for.</p>
+    </div>
+    <div>
+      <h3 class="u" style="direction:rtl;">اردو</h3>
+      <p class="ur u">کوئی قلعہ اُس وقت تک محفوظ نہیں سمجھا جا سکتا جب تک اُس کی کہانی اُس زبان میں زندہ نہ رہے جس میں اُس کے اپنے لوگ اسے بیان کرتے ہیں۔</p>
+    </div>
+  </div>
+  <p class="burushaski-note">Burushaski terms we're sourcing for the final page: Tham/Mir (ruler), Altít and Baltít (village names), Diramiting (spring festival tied to the fort calendar) — to be verified with a Hunza-based source before publishing.</p>
+</div>
+
+<section id="experience">
+  <div class="section-head">
+    <span class="section-num">03</span>
+    <div>
+      <div class="kicker">Digital experience</div>
+      <h2>What the live page and deck actually show</h2>
+    </div>
+  </div>
+
+  <div class="embed-grid">
+    <div class="map-wrap">
+      <span class="map-label">Karimabad, Hunza Valley</span>
+      <iframe src="https://www.google.com/maps?q=Baltit+Fort,+Karimabad,+Hunza&output=embed" loading="lazy" allowfullscreen></iframe>
+    </div>
+    <div class="idea-card">
+      <h4>What we're presenting</h4>
+      <ul>
+        <li><strong>This page:</strong> the terraced research narrative above — history, risk, and sources in one scroll, built to also work as a leave-behind link for judges.</li>
+        <li><strong>Slides (10 min):</strong> same four-act structure — thesis, what's at risk, five facts, and the preservation proposal — with the fort's floor plan and a before/1990s-decay vs after/1996-restored comparison.</li>
+        <li><strong>Extra credit target:</strong> the embedded map above, plus a GIF cross-fading the derelict-1980s photo into the restored fort (source: Aga Khan Trust for Culture archive, pending clearance).</li>
+        <li><strong>Stretch goal:</strong> a simple timeline widget (8th c. → 1891 British arrival → 1945 abandonment → 1990–96 restoration → 2004 UNESCO tentative listing → today) if time allows before 7:30 PM.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top:40px;">
+    <div class="kicker" style="margin-bottom:14px;">Audience &amp; language fit</div>
+    <div class="audience-row">
+      <span class="aud-chip">Eco-tourists</span>
+      <span class="aud-chip">Mountain communities</span>
+      <span class="aud-chip">Design students</span>
+      <span class="aud-chip">International travelers</span>
+      <span class="aud-chip">English + اردو</span>
+    </div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="section-head">
+    <span class="section-num">04</span>
+    <div>
+      <div class="kicker">Who did what</div>
+      <h2>Team Baltit — roles &amp; status</h2>
+    </div>
+  </div>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="role">Team Lead</div>
+      <h4>Muhammad Saad Saleem</h4>
+      <div class="task">WhatsApp group creation, live page maintenance, overall coordination.</div>
+      <span class="status">Fill in status</span>
+    </div>
+    <div class="team-card">
+      <div class="role">Member</div>
+      <h4>Azka Nadeem</h4>
+      <div class="task">Assign: research / sourcing, visual references, or presentation design.</div>
+      <span class="status">Fill in status</span>
+    </div>
+    <div class="team-card">
+      <div class="role">Member</div>
+      <h4>Fatima Malik</h4>
+      <div class="task">Assign: branding &amp; visual design, Canva deck build.</div>
+      <span class="status">Fill in status</span>
+    </div>
+    <div class="team-card">
+      <div class="role">Member</div>
+      <h4>Haris Said</h4>
+      <div class="task">Assign: map/embed build, extra-credit demo (GIF, 3D, or timeline).</div>
+      <span class="status">Fill in status</span>
+    </div>
+    <div class="team-card">
+      <div class="role">Member</div>
+      <h4>Muhammad Umer Sadan</h4>
+      <div class="task">Assign: source log, fact-checking, Q&amp;A prep.</div>
+      <span class="status">Fill in status</span>
+    </div>
+  </div>
+</section>
+
+<section id="log">
+  <div class="section-head">
+    <span class="section-num">05</span>
+    <div>
+      <div class="kicker">Source log</div>
+      <h2>Where every claim on this page comes from</h2>
+    </div>
+  </div>
+  <div class="table-scroll">
+    <table class="ledger">
+      <thead>
+        <tr><th>No.</th><th>Source</th><th>Used for</th><th>Type</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="n">01</td><td><a href="https://en.wikipedia.org/wiki/Baltit_Fort" target="_blank" rel="noopener">Wikipedia — Baltit Fort</a></td><td>Founding date, UNESCO tentative status, 1945 abandonment</td><td>Encyclopedia</td></tr>
+        <tr><td class="n">02</td><td><a href="https://the.akdn/en/where-we-work/south-asia/pakistan/conservation-and-development-in-gilgit-baltistan-pakistan" target="_blank" rel="noopener">Aga Khan Development Network — Gilgit-Baltistan Conservation</a></td><td>Restoration timeline, awards, regional template</td><td>Primary / institutional</td></tr>
+        <tr><td class="n">03</td><td><a href="https://www.archnet.org/sites/2701" target="_blank" rel="noopener">ArchNet — Baltit Fort Restoration</a></td><td>Visitor numbers, sustainable-enterprise model</td><td>Academic archive</td></tr>
+        <tr><td class="n">04</td><td><a href="https://artsandculture.google.com/story/baltit-fort-baltit-fort/UgWBlblG6-0eIQ" target="_blank" rel="noopener">Google Arts &amp; Culture — Baltit Fort</a></td><td>15th-century Princess Shah Khatoon renovation, Potala Palace parallel</td><td>Cultural institution</td></tr>
+        <tr><td class="n">05</td><td><a href="https://ismaili.net/gallery/baltit.html" target="_blank" rel="noopener">Ismaili.net — Baltit Fort Restoration 1996</a></td><td>1996 inauguration details, funding partners</td><td>Historical record / press</td></tr>
+        <tr><td class="n">06</td><td><a href="https://link.springer.com/article/10.1007/s10668-023-03396-6" target="_blank" rel="noopener">Environment, Development and Sustainability (Springer, 2024)</a></td><td>Shishper glacier GLOF research, Burusho farming community impact</td><td>Peer-reviewed journal</td></tr>
+        <tr><td class="n">07</td><td><a href="https://www.aljazeera.com/gallery/2023/11/27/mountain-villages-fight-for-future-as-melting-glaciers-spell" target="_blank" rel="noopener">Al Jazeera — Mountain villages fight melting glaciers</a></td><td>GLOF frequency increase, 2022 UNDP figures</td><td>News / photojournalism</td></tr>
+        <tr><td class="n">08</td><td><a href="https://news.climate.columbia.edu/2022/05/13/bridge-collapse-in-pakistan-due-to-glacier-lake-outburst-flood/" target="_blank" rel="noopener">Columbia Climate School — Hassanabad bridge collapse</a></td><td>2022 GLOF bridge collapse, Karakoram Highway disruption</td><td>Academic news desk</td></tr>
+        <tr><td class="n">09</td><td>To add: team-captured or Wikimedia Commons visual references</td><td>Cover image, before/after comparison</td><td>Visual reference</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<footer>
+  <span>Team Baltit — Pakistan Preservation Sprint</span>
+  <span>Baltit Fort &amp; Hunza Heritage Landscape · Karimabad, Gilgit&#8209;Baltistan</span>
+</footer>
+
+<script>
+  // terrace rail scroll indicator
+  const rail = document.getElementById('rail');
+  const n = 40;
+  for(let i=0;i<n;i++){ const s=document.createElement('span'); rail.appendChild(s); }
+  const spans = rail.querySelectorAll('span');
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    const on = Math.floor(pct * n);
+    spans.forEach((s,i)=> s.classList.toggle('on', i<=on));
+  }, {passive:true});
+</script>
+
+</body>
+</html>
