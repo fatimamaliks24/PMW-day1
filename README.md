@@ -4,24 +4,24 @@
 
 Hi! I'm **Fatima Malik**, a Computer Science student passionate about technology, artificial intelligence, and web development.
 
+## 🔗 Live Site
+
+**[View the portfolio page →](https://fatimamaliks24.github.io/PMW-Day-1/)**
+
+*(If this link 404s, GitHub Pages needs to be enabled on this repo under Settings → Pages, pointing at the branch this page lives on.)*
+
 ## 📌 About This Repository
 
-This repository was created as part of the **PreserveMy.World (PMW) Ice-Breaker and Week 1 activities**.
-
-The repository contains:
-
-* A personal introduction webpage (`index.html`)
-* My first GitHub project setup
-* Initial work completed during the PMW ice-breaker session
+This repository was created as part of the **PreserveMy.World (PMW) Ice-Breaker and Week 1 activities**. It holds my first PMW deliverable: a personal portfolio page that introduces me, my CS background, and the AI & 3D Reconstruction internship work I'm starting at PMW — built and version-controlled through my first full GitHub workflow (repo setup, commits, and a submission PR).
 
 ## 🎯 What I Learned
 
 Through this activity, I learned:
 
-* How to create and manage a GitHub repository.
-* How to edit and commit files on GitHub.
-* Basic HTML and webpage creation.
-* The importance of version control and project documentation.
+* How to set up and manage a GitHub repository end-to-end, including branching for a submission and opening a PR.
+* How to build a fully custom, responsive portfolio page in HTML/CSS (no framework) — including a CSS-variable-based theme system, a sticky nav, and a hero section — rather than starting from a template.
+* How to write a README that actually orients a reviewer: what's in the repo, what it does, and where to see it live.
+* Why documentation and a working live link matter as much as the code itself for anyone reviewing the repo.
 
 ## 🛠️ Technologies Used
 
