@@ -6,7 +6,7 @@ Hi! I'm **Fatima Malik**, a Computer Science student passionate about technology
 
 ## 🔗 Live Site
 
-**[View the portfolio page →](https://fatimamaliks24.github.io/PMW-Day-1/)**
+**[View the portfolio page →](https://fatimamaliks24.github.io/PMW-day1/)**
 
 *(If this link 404s, GitHub Pages needs to be enabled on this repo under Settings → Pages, pointing at the branch this page lives on.)*
 
